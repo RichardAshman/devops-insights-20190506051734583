@@ -1,25 +1,14 @@
 {
-	"Params": {
-		"DevMode": {
-			"Instrumentation": {
-				"command": "",
-				"env": {
-					"BLUEMIX_APP_MGMT_ENABLE": "devconsole+shell+inspector",
-					"NODE_ENV": "development"
-				},
-				"memory": "384M"
-			},
-			"Packager": "com.ibm.perfectstorm.cloudoe.packager.LiveEditDeploymentPackager"
-		},
-		"Name": "devops-insights-20190506051734583",
-		"Target": {
-			"Url": "https://api.ng.bluemix.net",
-			"Org": "ria3@students.waikato.ac.nz",
-			"Space": "production"
-		},
-		"Timeout": 60
-	},
-	"Path": "",
-	"ServiceId": "com.ibm.cloudoe.orion.client.deploy",
-	"Type": "Cloud Foundry"
+  "ServiceId": "com.ibm.cloudoe.orion.client.deploy",
+  "Params": {
+    "Target": {
+      "Url": "https://api.ng.bluemix.net",
+      "Org": "ria3@students.waikato.ac.nz",
+      "Space": "production"
+    },
+    "Name": "devops-insights-20190506051734583",
+    "Instrumentation": {}
+  },
+  "Path": "",
+  "Type": "Cloud Foundry"
 }

@@ -1,5 +1,5 @@
 
-(function () {
+function () {
 
   'use strict';
 
@@ -29,7 +29,7 @@
 
   describe('Get Weather', function() {
 	// Test Case 1
-    it('without city name', function() {
+    it('with without zip code', function() {
       reqMock = {
         query: {
 
@@ -61,7 +61,7 @@
     });
     
 	// Test Case 3
-    it('with incomplete city Name', function() {
+    it('with incomplete zip code', function() {
       reqMock = {
         query: {
           zip: "hamilton"
@@ -202,4 +202,4 @@
     });
   });
   */
-}());
+}();

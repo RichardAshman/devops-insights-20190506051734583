@@ -17,7 +17,7 @@ exports.getWeather = function(req, res) {
 
 	var aurl = OPENWEATHERURL + '&q=' + name + ',nz';
 
-console.log("apiv1.js -> aurl: " + aurl);
+//console.log("apiv1.js -> aurl: " + aurl);
 
 	request({
 		method: 'GET',

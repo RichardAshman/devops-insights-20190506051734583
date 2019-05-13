@@ -17,20 +17,27 @@ exports.getWeather = function(req, res) {
 
 	var aurl = OPENWEATHERURL + '&q=' + city + ',nz';
 
+console.log("aurl: " + aurl);
+
 	request({
 		method: 'GET',
         url: aurl,
   		json: true
     }, function(err, resp, body) {
+console.log("Now in function. Checking for error: ");
     	if(err) {
     		res.status(400).send('Failed to get the data');
-    		//console.error("Failed to send request to openweathermap.org", err);
+console.log("Error found. Error: " + err);
+    		console.error("Failed to send request to openweathermap.org", err);
     	} else {
     		if(body.cod === 200) {
+console.log("body.cod === 200");
     			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' F';
     			var response = {city: body.name, weather: weath};
+console.log("response: " + response);
     			return res.status(200).send(response);
     		} else {
+console.log("body.cod === 400");
                 return res.status(400).send({msg:'Failed'});
             }
     	}

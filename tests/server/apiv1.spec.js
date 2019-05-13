@@ -44,7 +44,7 @@
     it('apiv1 test case 2. with valid city name and error from request call', function() {
       reqMock = {
         query: {
-          q: "hamilton"
+          name: "hamilton"
         }
       };
 
@@ -64,7 +64,7 @@
     it('apiv1 test case 3. with incomplete city name', function() {
       reqMock = {
         query: {
-          q: "hamil"
+          name: "hamil"
         }
       };
 
@@ -84,7 +84,7 @@
     it('apiv1 test case 4. with valid city name', function() {
       reqMock = {
         query: {
-          q: 'hamilton'
+          name: 'hamilton'
         }
       };
 

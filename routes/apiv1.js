@@ -33,7 +33,7 @@ console.log("apiv1.js -> aurl: " + aurl);
     		if(body.cod === 200) {
 //console.log("body.cod === 200");
     			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' F';
-    			var response = {city: body.name, weather: weath};
+    			var response = {name: body.name, weather: weath};
 //console.log("response: " + response);
     			return res.status(200).send(response);
     		} else {

@@ -10,34 +10,34 @@ var request = REQUEST.defaults( {
 var OPENWEATHERURL = "http://api.openweathermap.org/data/2.5/weather?appid=6b7b471967dd0851d0010cdecf28f829&units=metric";
 
 exports.getWeather = function(req, res) {
-	var city = req.query.zip;
+	var city = req.query.name;
 	if( (city === null) || (typeof(city) === 'undefined') ) {
 		return res.status(400).send('City Name missing');
 	}
 
 	var aurl = OPENWEATHERURL + '&q=' + city + ',nz';
 
-console.log("aurl: " + aurl);
+console.log("apiv1.js -> aurl: " + aurl);
 
 	request({
 		method: 'GET',
         url: aurl,
   		json: true
     }, function(err, resp, body) {
-console.log("Now in function. Checking for error: ");
+//console.log("Now in function. Checking for error: ");
     	if(err) {
     		res.status(400).send('Failed to get the data');
-console.log("Error found. Error: " + err);
-    		console.error("Failed to send request to openweathermap.org", err);
+//console.log("Error found. Error: " + err);
+    		//console.error("Failed to send request to openweathermap.org", err);
     	} else {
     		if(body.cod === 200) {
-console.log("body.cod === 200");
+//console.log("body.cod === 200");
     			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' F';
     			var response = {city: body.name, weather: weath};
-console.log("response: " + response);
+//console.log("response: " + response);
     			return res.status(200).send(response);
     		} else {
-console.log("body.cod === 400");
+//console.log("body.cod === 400");
                 return res.status(400).send({msg:'Failed'});
             }
     	}

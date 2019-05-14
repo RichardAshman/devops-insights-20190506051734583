@@ -17,27 +17,20 @@ exports.getWeather = function(req, res) {
 
 	var aurl = OPENWEATHERURL + '&q=' + name + ',nz';
 
-//console.log("apiv1.js -> aurl: " + aurl);
-
 	request({
 		method: 'GET',
         url: aurl,
   		json: true
     }, function(err, resp, body) {
-//console.log("Now in function. Checking for error: ");
     	if(err) {
     		res.status(400).send('Failed to get the data');
-//console.log("Error found. Error: " + err);
     		//console.error("Failed to send request to openweathermap.org", err);
     	} else {
     		if(body.cod === 200) {
-//console.log("body.cod === 200");
     			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' F';
     			var response = {name: body.name, weather: weath};
-//console.log("response: " + response);
     			return res.status(200).send(response);
     		} else {
-//console.log("body.cod === 400");
                 return res.status(400).send({msg:'Failed'});
             }
     	}
@@ -45,37 +38,5 @@ exports.getWeather = function(req, res) {
 
 };
 router.get('/getWeather', exports.getWeather);
-
-/*
-exports.getWeather2 = function(req, res) {
-	var zip = req.query.zip;
-	if( (zip === null) || (typeof(zip) === 'undefined') ) {
-		return res.status(400).send('zip missing');
-	}
-
-	var aurl = OPENWEATHERURL + '&zip=' + zip + ',us';
-
-	request({
-		method: 'GET',
-        url: aurl,
-  		json: true
-    }, function(err, resp, body) {
-    	if(err) {
-    		res.status(400).send('Failed to get the data');
-    		//console.error("Failed to send request to openweathermap.org", err);
-    	} else {
-    		if(body.cod === 200) {
-    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' F';
-    			var response = {city: body.name, weather: weath};
-    			return res.status(200).send(response);
-    		} else {
-                return res.status(400).send({msg:'Failed'});
-            }
-    	}
-    });
-
-};
-router.get('/getWeather2', exports.getWeather2);
-*/
 
 exports.router = router;

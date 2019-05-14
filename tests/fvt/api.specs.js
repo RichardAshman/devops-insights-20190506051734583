@@ -27,9 +27,9 @@
           	if(err) {
           		assert.fail('Failed to get the response');
           	} else {
-              assert.equal(resp.statusCode, 200);
+              assert.equal(resp.statusCode, 200, "Fail: " +  appUrl + '/api/v1/getWeather?name=hamilton');
               var pbody = JSON.parse(body);
-              assert((pbody.name === 'Hamilton') || (pbody.name === 'Round Rock'), "City name does not match");
+              assert(pbody.name === 'Hamilton'), "City name does not match");
               done();
             }
         });

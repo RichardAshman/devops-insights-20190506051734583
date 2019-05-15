@@ -1,7 +1,7 @@
 
 var ConsoleModule = angular.module('ConsoleModule', ['ngRoute']);
 
-var maps = require('./static/maps.js');
+var maps = require('./maps.js');
 
 ConsoleModule.config(['$routeProvider', '$locationProvider','$sceDelegateProvider', '$httpProvider',
     function ($routeProvider, $locationProvider, $sceDelegateProvider, $httpProvider) {

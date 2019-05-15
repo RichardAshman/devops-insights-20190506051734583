@@ -15,8 +15,8 @@ var OPENWEATHERURL = "https://api.openweathermap.org/data/2.5/weather?appid=6b7b
 
 exports.getWeather = function(req, res) {
 	var name = req.query.name;
-	var lat = req.query.coord.lat;
-	var lon = req.query.coord.lon;
+	var lat = req.query.lat;
+	var lon = req.query.lon;
 	if( (name === null || typeof(name) === 'undefined')
 		&& (lat === null || typeof(lat) === 'undefined')
 		&& (lon === null || typeof(lon) === 'undefined')) {

@@ -121,10 +121,8 @@
     it('apiv1 test case 5. with valid lat and lon', function() {
       reqMock = {
         query: {
-        	coord: {
-				lon:175.28,
-				lat:-37.79
-			}
+			lon:175.28,
+			lat:-37.79
         }
       };
       apiv1.getWeather(reqMock, resMock);

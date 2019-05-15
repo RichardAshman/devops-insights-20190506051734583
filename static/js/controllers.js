@@ -1,6 +1,8 @@
 
 var ConsoleModule = angular.module('ConsoleModule', ['ngRoute']);
 
+var maps = require('./static/maps.js');
+
 ConsoleModule.config(['$routeProvider', '$locationProvider','$sceDelegateProvider', '$httpProvider',
     function ($routeProvider, $locationProvider, $sceDelegateProvider, $httpProvider) {
     $routeProvider.when('/', {
@@ -43,6 +45,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
             } else if(which === 4) {
                 $scope.zip4Weather = response.data.weather;
             } 
+			maps.setMarker(which, response.data.lat, response.data.lon);            
         });
     };
 }]);

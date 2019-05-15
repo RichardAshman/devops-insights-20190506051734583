@@ -128,7 +128,7 @@
       apiv1.getWeather(reqMock, resMock);
 
       assert(resMock.status.lastCall.calledWith(200), '1 Unexpected response: ' + resMock.status.lastCall.args);
-      assert(resMock.send.lastCall.args[0].name === 'Hamilton', '2 Unexpected response: ' + resMock.send.lastCall.args[0].name);
+      assert(resMock.send.lastCall.args[0].name === 'hamilton', '2 Unexpected response: ' + resMock.send.lastCall.args[0].name);
     });
   });
 }());

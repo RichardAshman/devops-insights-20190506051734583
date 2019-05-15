@@ -54,7 +54,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
             } else if(which === 4) {
                 $scope.zip4Weather = response.data.weather;
             } 
-			./maps.setMarker(which, response.data.lat, response.data.lon, $scope.map1m);            
+			setMarker(which, response.data.lat, response.data.lon, $scope.map1m);            
         });
     };
 }]);

@@ -98,7 +98,7 @@
         ],
         main: {
           temp: 78
-        }
+        },
         coord: {
 			lon:175.28,
 			lat:-37.79
@@ -116,6 +116,21 @@
       assert(resMock.status.lastCall.calledWith(200), '1 Unexpected response: ' + resMock.status.lastCall.args);
       assert(resMock.send.lastCall.args[0].name === 'hamilton', '2 Unexpected response: ' + resMock.send.lastCall.args[0].name);
       assert(resMock.send.lastCall.args[0].weather === 'Conditions are cold and temperature is 78 C', '3 Unexpected response: ' + resMock.send.lastCall.args[0].weather);
+    });
+	// Test Case 5
+    it('apiv1 test case 5. with valid lat and lon', function() {
+      reqMock = {
+        query: {
+        	coord: {
+				lon:175.28,
+				lat:-37.79
+			}
+        }
+      };
+      apiv1.getWeather(reqMock, resMock);
+
+      assert(resMock.status.lastCall.calledWith(200), '1 Unexpected response: ' + resMock.status.lastCall.args);
+      assert(resMock.send.lastCall.args[0].name === 'Hamilton', '2 Unexpected response: ' + resMock.send.lastCall.args[0].name);
     });
   });
 }());

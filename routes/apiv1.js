@@ -17,9 +17,9 @@ exports.getWeather = function(req, res) {
 	var name = req.query.name;
 	var lat = req.query.lat;
 	var lon = req.query.lon;
-	if( (name === null) || (typeof(name) === 'undefined')
-		&& (lat === null) || (typeof(lat) === 'undefined')
-		&& (lon === null) || (typeof(lon) === 'undefined')) {
+	if( (name === null || typeof(name) === 'undefined')
+		&& (lat === null || typeof(lat) === 'undefined')
+		&& (lon === null || typeof(lon) === 'undefined')) {
 		return res.status(400).send('City Name missing');
 	}
 	var aurl;

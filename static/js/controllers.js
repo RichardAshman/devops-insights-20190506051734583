@@ -1,7 +1,4 @@
-
 var ConsoleModule = angular.module('ConsoleModule', ['ngRoute']);
-
-var maps = require('./maps.js');
 
 ConsoleModule.config(['$routeProvider', '$locationProvider','$sceDelegateProvider', '$httpProvider',
     function ($routeProvider, $locationProvider, $sceDelegateProvider, $httpProvider) {
@@ -11,6 +8,18 @@ ConsoleModule.config(['$routeProvider', '$locationProvider','$sceDelegateProvide
         controllerAs: 'wcontroller'
     });
 }]);
+
+var markers = [{},{},{},{}];     
+
+function setMarker(which, lat, lng, map1){
+	markers[which].setMap(null);
+	markers[which] = null;
+	markers[which] = new google.maps.Marker({
+  		position: [lat, lng],
+  		map: map1 
+	});
+}
+
 
 ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$timeout', '$sce',
     function($scope, $http, $routeParams, $timeout, $sce) {
@@ -45,7 +54,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
             } else if(which === 4) {
                 $scope.zip4Weather = response.data.weather;
             } 
-			maps.setMarker(which, response.data.lat, response.data.lon);            
+			./maps.setMarker(which, response.data.lat, response.data.lon, $scope.map1m);            
         });
     };
 }]);

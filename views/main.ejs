@@ -12,13 +12,20 @@
     </head>
 
     <body>
-        <div float="left">
+        <div style="float:left; width:100%; height:40%; padding-left:15px">
             <% include includes/mainbody %>
 			
         </div>
         
-        <div id="map" style="float:left; width:100%; height:60%; padding-left:15px"></div>
-        <script src="/js/maps.js"></script>
+        <div id="map" style="float:left; width:100%; height:60%; padding-left:15px" ng-model="map1m" ng-change="map(1)"></div>var map;
+		<script>
+			function initMap() {
+			map = new google.maps.Map(document.getElementById('map'), {
+				center: {lat: -38.789, lng: 175.317}, // nz
+				zoom: 5
+			});
+		}
+		</script>
 		<script src="https://maps.googleapis.com/maps/api/js?callback=js.maps.initMap" async defer></script>
 			
  

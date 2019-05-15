@@ -26,7 +26,7 @@
           }, function(err, resp, body) {
           	if(err) {
           		assert.fail('Failed to get the response');
-          	} else {
+          	} else { // appUrl = https://staging-devops-insights-20190506051734583.mybluemix.net
               assert.equal(resp.statusCode, 200, "Fail: " +  appUrl + '/api/v1/getWeather?name=hamilton');
               var pbody = JSON.parse(body);
               assert(pbody.name === 'Hamilton', "City name does not match");

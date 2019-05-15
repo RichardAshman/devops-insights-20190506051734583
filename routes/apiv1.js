@@ -24,9 +24,9 @@ exports.getWeather = function(req, res) {
 	}
 	var aurl;
 	if( (name === null) || (typeof(name) === 'undefined')){
-		aurl = OPENWEATHERURL + '&q=' + name + ',nz';
-	} else {
 		aurl = OPENWEATHERURL + '&lat=' + lat + '&lon=' + lon;
+	} else {
+		aurl = OPENWEATHERURL + '&q=' + name + ',nz';
 	}
 
 	request({

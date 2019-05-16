@@ -28,12 +28,11 @@
 			});
 		}
 		map.addListener('click', function(event) {
-          setMarker(event.latLng);
+          setMarker(-1, event.latLng, map);
         });
 		</script>
 		<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
-			
- 
+
     </body>
 
     <script>

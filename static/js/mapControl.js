@@ -15,7 +15,6 @@ function setMarker(which, loc) {
 		if (nextMarker > 3) {
 			nextMarker = 0;
 		}
-		
 	} else {
 		var temp = index + 1;
 		if (temp > 3) {
@@ -33,18 +32,15 @@ function setMarker(which, loc) {
 	});
 	
 	var url = 'https://api.openweathermap.org/data/2.5/weather?appid=6b7b471967dd0851d0010cdecf28f829&units=metric&lat=' + loc.lat() + '&lon=' + loc.lng();
-	
 	var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() { 
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
 			var jObj = JSON.parse(xmlHttp.responseText);
-    		var z = "zip" + index;
-    		var c = "zip" + index + "city";
-    		var w = "zip" + index + "weather";
+    		var z = "zip" + (index+1);
+    		var c = "zip" + (index+1) + "city";
+    		var w = "zip" + (index+1) + "weather";
     		var weath = "Conditions are " + jObj.weather[0].main + " and temperature is " + jObj.main.temp + ' C';
-    		/*document.getElementById(z).innerHTML(jObj.name);
-    		document.getElementById(c).innerHTML(jObj.name);
-    		document.getElementById(w).innerHTML(weath);*/
+
     		if(index === 1) {
                 zipScope.zip1City = jObj.name;
                 zipScope.zip1Weather = weath;

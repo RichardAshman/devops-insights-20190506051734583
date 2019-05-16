@@ -1,8 +1,8 @@
-
-var REQUEST = require('request');
+var request = require('request');
+/*var REQUEST = require('request');
 var request = REQUEST.defaults( {
     strictSSL: false
-});
+});*/
 
 var markers = [];  
 var nextMarker = 0;
@@ -47,6 +47,7 @@ function setMarker(which, loc) {
     			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' C';
     			document.getElementById(w).innerHTML(body.name);
     			document.getElementById(w + "weather").innerHTML(weath);
+			alert("w: " + w + "\nurl: " + url + "\nname: " + body.name + "\nweather: " + weath);
     			var response = {name: body.name};
     			return res.status(200).send(response);
     		}

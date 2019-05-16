@@ -36,11 +36,11 @@ function setMarker(which, loc) {
 		map: map
 	});
 	
-	var url = 'https://api.openweathermap.org/data/2.5/weather?appid=6b7b471967dd0851d0010cdecf28f829&units=metric&lat=' + loc.lat + '&lon=' + loc.lon;
+	var url = 'https://api.openweathermap.org/data/2.5/weather?appid=6b7b471967dd0851d0010cdecf28f829&units=metric&lat=' + loc.lat() + '&lon=' + loc.lng();
 	
-			alert("url: " + "https://api.openweathermap.org/data/2.5/weather?appid=6b7b471967dd0851d0010cdecf28f829&units=metric&lat=' + loc.lat + '&lon=' + loc.lon");
+			alert("request sending: " + url);
+			
 	request({
-		
 		method: 'GET',
         url: url,
   		json: true

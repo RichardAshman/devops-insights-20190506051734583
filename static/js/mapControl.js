@@ -13,12 +13,16 @@ var map;
 				center: {lat: -38.789, lng: 175.317}, // nz
 				zoom: 5
 			});
-		}
 		map.addListener('click', function(event) {
           setMarker(-1, event.latLng);
         });
+		}
         
 function setMarker(which, loc) {
+		if(nextMarker === 'undefined' || nextMarker === null){
+    nextMarker = 0;
+    markers = [];
+    }
 	var index = which-1;
 	if (index < 0) {
 		index = nextMarker;
@@ -26,10 +30,15 @@ function setMarker(which, loc) {
 		if (nextMarker > 3) {
 			nextMarker = 0;
 		}
+		
+		if(markers[index] !== 'undefined' && markers[index] !== null){
+			markers[index].setMap(null);
+    	}
+		/*
 		if(markers[index] !== 'undefined' && markers[index] !== null){
 			markers[index].setMap(null);
 			markers[index] = null;
-		}
+		}*/
 	} else {
 		var temp = index + 1;
 		if (temp > 3) {
@@ -44,7 +53,10 @@ function setMarker(which, loc) {
 	});
 	
 	var url = 'https://api.openweathermap.org/data/2.5/weather?appid=6b7b471967dd0851d0010cdecf28f829&units=metric&lat=' + loc.lat + '&lon=' + loc.lon;
+	
+			alert("url: " + "https://api.openweathermap.org/data/2.5/weather?appid=6b7b471967dd0851d0010cdecf28f829&units=metric&lat=' + loc.lat + '&lon=' + loc.lon");
 	request({
+		
 		method: 'GET',
         url: url,
   		json: true

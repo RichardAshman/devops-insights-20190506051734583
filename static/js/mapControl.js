@@ -1,8 +1,3 @@
-/*var REQUEST = require('request');
-var request = REQUEST.defaults( {
-    strictSSL: false
-});
-*/
 var markers = [];  
 var nextMarker = 0;
 var map;
@@ -41,39 +36,18 @@ function setMarker(which, loc) {
 	var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() { 
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
-            alert("here3: " + xmlHttp.responseText);
-    		document.getElementById("zip" + (index+1)).innerHTML(xmlHttp.responseText.name);
+			var jObj = JSON.parse(xmlHttp.responseText);
+    		var z = "zip" + index;
+    		var c = "zip" + index + "city";
+    		var w = "zip" + index + "weather";
+    		var weath = "Conditions are " + jObj.weather[0].main + " and temperature is " + jObj.main.temp + ' C';
+    		document.getElementById(z).innerHTML(jObj.name);
+    		document.getElementById(c).innerHTML(jObj.name);
+    		document.getElementById(w).innerHTML(weath);
 		}
     };
     xmlHttp.open("GET", url, true); // true for asynchronous 
     xmlHttp.send(null);
-	
-	
-	/*
-			alert("request sending: " + url);
-			
-	request({
-		method: 'GET',
-        url: url,
-  		json: true
-    }, function(err, resp, body) {
-    	
-			alert("request back");
-    	if(err) {
-    		res.status(400).send('Failed to get the name from xy');
-    	} else {
-    		if(body.cod === 200) {
-    			var w = "zip" + (index+1);
-    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' C';
-    			document.getElementById(w).innerHTML(body.name);
-    			document.getElementById(w + "weather").innerHTML(weath);
-			alert("w: " + w + "\nurl: " + url + "\nname: " + body.name + "\nweather: " + weath);
-    			var response = {name: body.name};
-    			return res.status(200).send(response);
-    		}
-            return res.status(400).send({msg:'Failed to get name from xy. 400 error'});
-    	}
-    });*/
 }
 
 function initMap() {

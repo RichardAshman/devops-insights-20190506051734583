@@ -11,7 +11,7 @@ ConsoleModule.config(['$routeProvider', '$locationProvider','$sceDelegateProvide
 ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$timeout', '$sce',
     function($scope, $http, $routeParams, $timeout, $sce) {
 
-	zipScope = $scope;
+	//zipScope = $scope;
     $scope.somemessage = "Some weather";
     $scope.zip1City = "";
     $scope.zip1Weather = "";

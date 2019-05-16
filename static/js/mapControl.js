@@ -44,7 +44,7 @@ function setMarker(which, loc) {
             alert("here3: " + xmlHttp.responseText);
     		document.getElementById("zip" + (index+1)).innerHTML(xmlHttp.responseText.name);
 		}
-    }
+    };
     xmlHttp.open("GET", url, true); // true for asynchronous 
     xmlHttp.send(null);
 	

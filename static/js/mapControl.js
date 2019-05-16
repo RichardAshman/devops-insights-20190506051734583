@@ -1,7 +1,7 @@
 var markers = [];  
 var nextMarker = 0;
 var map;
-//var zipScope;
+var zipScope;
 
 function setMarker(which, loc) {
 	if(nextMarker == 'undefined' || nextMarker == null){
@@ -42,16 +42,9 @@ function setMarker(which, loc) {
     		var w = "zip" + (index) + "weather";
     		var weath = "Conditions are " + jObj.weather[0].main + " and temperature is " + jObj.main.temp + ' C';
 
-/*
-ConsoleModule
-    var appElement = document.querySelector('[ng-app=myApp]');
+    var appElement = document.querySelector('[ngRoute=ConsoleModule]');
     var $scope = angular.element(appElement).scope();
     $scope.$apply(function() {
-        $scope.data.age = 20;
-    });
-    
-    var ConsoleModule = angular.module('ConsoleModule', ['ngRoute']);*/
-angular.element('[ngRoute=ConsoleModule]').scope().$apply(function(){
 			if(index === 1) {
                 $scope.zip1City = jObj.name;
                 $scope.zip1Weather = weath;
@@ -64,13 +57,8 @@ angular.element('[ngRoute=ConsoleModule]').scope().$apply(function(){
             } else if(index === 4) {
                 $scope.zip4City = jObj.name;
                 $scope.zip4Weather = weath;
-            } 
-	});
-
-
-
-
-
+            }
+    });
 /*
     		if(index === 1) {
                 zipScope.zip1City = jObj.name;

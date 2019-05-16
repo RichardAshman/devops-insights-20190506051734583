@@ -1,8 +1,8 @@
-var request = require('request');
-/*var REQUEST = require('request');
+//var request = require('request');
+var REQUEST = require('request');
 var request = REQUEST.defaults( {
     strictSSL: false
-});*/
+});
 
 var markers = [];  
 var nextMarker = 0;
@@ -15,7 +15,7 @@ var map;
 			});
 		}
 		map.addListener('click', function(event) {
-          setMarker(-1, event.latLng, map);
+          setMarker(-1, event.latLng);
         });
         
 function setMarker(which, loc) {
@@ -49,6 +49,8 @@ function setMarker(which, loc) {
         url: url,
   		json: true
     }, function(err, resp, body) {
+    	
+			alert("request back");
     	if(err) {
     		res.status(400).send('Failed to get the name from xy');
     	} else {

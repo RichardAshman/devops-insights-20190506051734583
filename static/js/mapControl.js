@@ -40,9 +40,10 @@ function setMarker(which, loc) {
 	
 	var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() { 
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
             alert("here3: " + xmlHttp.responseText);
     		document.getElementById("zip" + (index+1)).innerHTML(xmlHttp.responseText.name);
+		}
     }
     xmlHttp.open("GET", url, true); // true for asynchronous 
     xmlHttp.send(null);

@@ -130,5 +130,17 @@
       assert(resMock.status.lastCall.calledWith(200), '1 Unexpected response: ' + resMock.status.lastCall.args);
       assert(resMock.send.lastCall.args[0].name === 'hamilton', '2 Unexpected response: ' + resMock.send.lastCall.args[0].name);
     });
+	// Test Case 6
+    it('apiv1 test case 6. with non-valid lat and lon', function() {
+      reqMock = {
+        query: {
+			lon:175.28
+        }
+      };
+      apiv1.getWeather(reqMock, resMock);
+
+      assert(resMock.status.lastCall.calledWith(400), '1 Unexpected response: ' + resMock.status.lastCall.args);
+      assert(resMock.send.lastCall.args[0].msg === 'Failed', '2 Unexpected response: ' + resMock.send.lastCall.args);
+    });
   });
 }());

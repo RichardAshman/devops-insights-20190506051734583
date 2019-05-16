@@ -9,16 +9,34 @@ ConsoleModule.config(['$routeProvider', '$locationProvider','$sceDelegateProvide
     });
 }]);
 
-var markers = [{},{},{},{}];     
+var markers = [];  
+var nextMarker = 0;
+var map;
 
-function setMarker(which, lat, lng, map1){
-	markers[which].setMap(null);
-	markers[which] = null;
-	markers[which] = new google.maps.Marker({
-  		position: [lat, lng],
-  		map: map1 
+function setMarker(which, loc) {
+	var index = which-1;
+	if (index < 0) {
+		index = nextMarker;
+		nextMarker++;
+		if (nextMarker > 3) {
+			nextMarker = 0;
+		}
+		if(markers[index] !== 'undefined' && markers[index] !== null){
+			markers[index].setMap(null);
+		}
+	} else {
+		var temp = index + 1;
+		if (temp > 3) {
+			temp = 0;
+		}
+		nextMarker = temp;
+	}
+	markers[index] = new google.maps.Marker({
+		position: loc,
+		map: map
 	});
 }
+
 
 
 ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$timeout', '$sce',

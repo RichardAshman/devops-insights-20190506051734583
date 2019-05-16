@@ -19,13 +19,16 @@
         
         <div id="map" style="float:left; width:100%; height:60%; padding-left:15px" ng-model="map1m" ng-change="map(1)"></div>
 		<script>
-			var map;
+			//var map;
 			function initMap() {
 			map = new google.maps.Map(document.getElementById('map'), {
 				center: {lat: -38.789, lng: 175.317}, // nz
 				zoom: 5
 			});
 		}
+		map.addListener('click', function(event) {
+          addMarker(event.latLng);
+        });
 		</script>
 		<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
 			

@@ -1,4 +1,3 @@
-//var request = require('request');
 var REQUEST = require('request');
 var request = REQUEST.defaults( {
     strictSSL: false
@@ -7,21 +6,11 @@ var request = REQUEST.defaults( {
 var markers = [];  
 var nextMarker = 0;
 var map;
-
-		function initMap() {
-			map = new google.maps.Map(document.getElementById('map'), {
-				center: {lat: -38.789, lng: 175.317}, // nz
-				zoom: 5
-			});
-		map.addListener('click', function(event) {
-          setMarker(-1, event.latLng);
-        });
-		}
         
 function setMarker(which, loc) {
-		if(nextMarker === 'undefined' || nextMarker === null){
-    nextMarker = 0;
-    markers = [];
+	if(nextMarker == 'undefined' || nextMarker == null){
+    	nextMarker = 0;
+    	markers = [];
     }
 	var index = which-1;
 	if (index < 0) {
@@ -31,14 +20,9 @@ function setMarker(which, loc) {
 			nextMarker = 0;
 		}
 		
-		if(markers[index] !== 'undefined' && markers[index] !== null){
+		if(markers[index] != 'undefined' && markers[index] != null){
 			markers[index].setMap(null);
     	}
-		/*
-		if(markers[index] !== 'undefined' && markers[index] !== null){
-			markers[index].setMap(null);
-			markers[index] = null;
-		}*/
 	} else {
 		var temp = index + 1;
 		if (temp > 3) {
@@ -78,5 +62,14 @@ function setMarker(which, loc) {
             return res.status(400).send({msg:'Failed to get name from xy. 400 error'});
     	}
     });
+}
 
+function initMap() {
+	map = new google.maps.Map(document.getElementById('map'), {
+		center: {lat: -38.789, lng: 175.317}, // nz
+		zoom: 5
+	});
+	map.addListener('click', function(event) {
+		setMarker(-1, event.latLng);
+	});
 }

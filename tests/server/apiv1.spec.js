@@ -139,7 +139,6 @@
       };
       apiv1.getWeather(reqMock, resMock);
 
-      assert(resMock.status.lastCall.calledWith(400), '1 Unexpected response: ' + resMock.status.lastCall.args);
       assert(resMock.send.lastCall.args[0].msg === 'Failed', '2 Unexpected response: ' + resMock.send.lastCall.args);
     });
   });

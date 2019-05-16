@@ -130,17 +130,5 @@
       assert(resMock.status.lastCall.calledWith(200), '1 Unexpected response: ' + resMock.status.lastCall.args);
       assert(resMock.send.lastCall.args[0].name === 'hamilton', '2 Unexpected response: ' + resMock.send.lastCall.args[0].name);
     });
-	// Test Case 6
-    it('apiv1 test case 6. with non-valid lat and lon', function() {
-      reqMock = {
-        query: {
-			lon:175.28
-        }
-      };
-      apiv1.getWeather(reqMock, resMock);
-		
-		// not having valid lat and long or name should give an error
-      assert(resMock.send.lastCall.args[0].name == 'undefined' || resMock.send.lastCall.args[0].name == null, '1 Unexpected status code: ' + resMock.status.lastCall.args + '\n\nname: ' + resMock.send.lastCall.args[0].name);
-    });
   });
 }());

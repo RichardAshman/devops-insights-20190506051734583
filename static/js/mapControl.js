@@ -1,8 +1,8 @@
-var REQUEST = require('request');
+/*var REQUEST = require('request');
 var request = REQUEST.defaults( {
     strictSSL: false
 });
-
+*/
 var markers = [];  
 var nextMarker = 0;
 var map;
@@ -38,6 +38,17 @@ function setMarker(which, loc) {
 	
 	var url = 'https://api.openweathermap.org/data/2.5/weather?appid=6b7b471967dd0851d0010cdecf28f829&units=metric&lat=' + loc.lat() + '&lon=' + loc.lng();
 	
+	var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            alert("here3: " + xmlHttp.responseText);
+    		document.getElementById("zip" + (index+1)).innerHTML(xmlHttp.responseText.name);
+    }
+    xmlHttp.open("GET", url, true); // true for asynchronous 
+    xmlHttp.send(null);
+	
+	
+	/*
 			alert("request sending: " + url);
 			
 	request({
@@ -61,7 +72,7 @@ function setMarker(which, loc) {
     		}
             return res.status(400).send({msg:'Failed to get name from xy. 400 error'});
     	}
-    });
+    });*/
 }
 
 function initMap() {

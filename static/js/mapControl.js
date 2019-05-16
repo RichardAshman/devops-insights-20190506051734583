@@ -8,6 +8,16 @@ var markers = [];
 var nextMarker = 0;
 var map;
 
+		function initMap() {
+			map = new google.maps.Map(document.getElementById('map'), {
+				center: {lat: -38.789, lng: 175.317}, // nz
+				zoom: 5
+			});
+		}
+		map.addListener('click', function(event) {
+          setMarker(-1, event.latLng, map);
+        });
+        
 function setMarker(which, loc) {
 	var index = which-1;
 	if (index < 0) {

@@ -1,6 +1,7 @@
 var markers = [];  
 var nextMarker = 0;
 var map;
+var zipScope;
         
 function setMarker(which, loc) {
 	if(nextMarker == 'undefined' || nextMarker == null){
@@ -15,9 +16,6 @@ function setMarker(which, loc) {
 			nextMarker = 0;
 		}
 		
-		if(markers[index] != 'undefined' && markers[index] != null){
-			markers[index].setMap(null);
-    	}
 	} else {
 		var temp = index + 1;
 		if (temp > 3) {
@@ -25,6 +23,9 @@ function setMarker(which, loc) {
 		}
 		nextMarker = temp;
 	}
+		if(markers[index] != 'undefined' && markers[index] != null){
+			markers[index].setMap(null);
+    	}
 	
 	markers[index] = new google.maps.Marker({
 		position: loc,
@@ -41,9 +42,22 @@ function setMarker(which, loc) {
     		var c = "zip" + index + "city";
     		var w = "zip" + index + "weather";
     		var weath = "Conditions are " + jObj.weather[0].main + " and temperature is " + jObj.main.temp + ' C';
-    		document.getElementById(z).innerHTML(jObj.name);
+    		/*document.getElementById(z).innerHTML(jObj.name);
     		document.getElementById(c).innerHTML(jObj.name);
-    		document.getElementById(w).innerHTML(weath);
+    		document.getElementById(w).innerHTML(weath);*/
+    		if(index === 1) {
+                zipScope.zip1City = jObj.name;
+                zipScope.zip1Weather = weath;
+            } else if(index === 2) {
+                zipScope.zip2City = jObj.name;
+                zipScope.zip2Weather = weath;
+            } else if(index === 3) {
+                zipScope.zip3City = jObj.name;
+                zipScope.zip3Weather = weath;
+            } else if(index === 4) {
+                zipScope.zip4City = jObj.name;
+                zipScope.zip4Weather = weath;
+            } 
 		}
     };
     xmlHttp.open("GET", url, true); // true for asynchronous 

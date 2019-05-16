@@ -8,10 +8,9 @@ ConsoleModule.config(['$routeProvider', '$locationProvider','$sceDelegateProvide
         controllerAs: 'wcontroller'
     });
 }]);
-ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$timeout', '$sce',
-    function($scope, $http, $routeParams, $timeout, $sce) {
+ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$timeout', '$sce', '$interval',
+    function($scope, $http, $routeParams, $timeout, $sce, $interval) {
 
-	zipScope = $scope;
     $scope.somemessage = "Some weather";
     $scope.zip1City = "";
     $scope.zip1Weather = "";
@@ -49,4 +48,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 			setMarker(which, {lat:response.data.lat, lng:response.data.lon});            
         });
     };
+     $interval(function() {
+			zipScope = $scope;
+          }, 100);
 }]);

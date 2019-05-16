@@ -138,8 +138,8 @@
         }
       };
       apiv1.getWeather(reqMock, resMock);
-
-      assert(resMock.send.lastCall.args[0].msg === 'Failed', '2 Unexpected response: ' + resMock.send.lastCall.args);
+		// not having valid lat and long or name should give an error
+      assert(resMock.status.lastCall.calledWith(400), '1 Unexpected status code: ' + resMock.status.lastCall.args);
     });
   });
 }());

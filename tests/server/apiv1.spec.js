@@ -138,8 +138,9 @@
         }
       };
       apiv1.getWeather(reqMock, resMock);
+		
 		// not having valid lat and long or name should give an error
-      assert(resMock.status.lastCall.calledWith(400), '1 Unexpected status code: ' + resMock.status.lastCall.args);
+      assert(resMock.send.lastCall.args[0].name == 'undefined' || resMock.send.lastCall.args[0].name == null, '1 Unexpected status code: ' + resMock.status.lastCall.args + '\n\nname: ' + resMock.send.lastCall.args[0].name);
     });
   });
 }());

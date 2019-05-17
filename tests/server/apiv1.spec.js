@@ -118,7 +118,7 @@
       assert(resMock.send.lastCall.args[0].weather === 'Conditions are cold and temperature is 78 C', '3 Unexpected response: ' + resMock.send.lastCall.args[0].weather);
     });
 	// Test Case 5
-    it('apiv1 test case 5. with valid lat and lon', function() {
+    it('apiv1 test case 5. with latitude and longitude rather than city name', function() {
       reqMock = {
         query: {
 			lon:175.28,
@@ -126,7 +126,6 @@
         }
       };
       apiv1.getWeather(reqMock, resMock);
-
       assert(resMock.status.lastCall.calledWith(200), '1 Unexpected response: ' + resMock.status.lastCall.args);
       assert(resMock.send.lastCall.args[0].name === 'hamilton', '2 Unexpected response: ' + resMock.send.lastCall.args[0].name);
     });
